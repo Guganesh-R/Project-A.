@@ -1,0 +1,62 @@
+﻿@model TMS1.Models.VehicleInfo
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="CreateAllocation">
+    <h1 style="text-align:center">Create New Vehicle Information</h1>
+</div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VehicleId" class="control-label"></label>
+                <input asp-for="VehicleId" class="form-control" />
+                <span asp-validation-for="VehicleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleCapacity" class="control-label"></label>
+                <input asp-for="VehicleCapacity" class="form-control ip-VehicleCapacity" />
+                <span asp-validation-for="VehicleCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatAvailablity" class="control-label"></label>
+                <input asp-for="SeatAvailablity" class="form-control ip-SeatAvailablity" onkeyup="validate()" />
+                <span asp-validation-for="SeatAvailablity" class="text-danger"></span>
+            </div>
+            <br />
+            <div style="text-align:center" class="form-group">
+                <input id="create" type="submit"  class="btn btn-primary" />
+            </div>
+        </form>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+
+@section Scripts {
+    <script>
+        function validate() {
+
+            while ($('.ip-SeatAvailablity').val() < $('.ip-VehicleCapacity').val()) {
+                alert('Availseats cannot be less than capacity');
+                break;
+            }
+            while ($('.ip-VehicleCapacity').val() < $('.ip-SeatAvailablity').val()) {
+                alert('Availseats cannot be greater than capacity');
+                break;
+            }
+        }
+     </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

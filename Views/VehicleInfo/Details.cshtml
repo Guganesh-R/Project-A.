@@ -1,0 +1,31 @@
+﻿@model TMS1.Models.VehicleInfo
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="CreateAllocation">Individual Vehicle Details</h1>
+
+<div>
+   
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VehicleCapacity) :
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VehicleCapacity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SeatAvailablity) :
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SeatAvailablity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.VehicleId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

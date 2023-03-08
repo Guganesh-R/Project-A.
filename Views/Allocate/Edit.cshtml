@@ -1,0 +1,47 @@
+﻿@model TMS1.Models.Allocate
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="CreateAllocation">Edit Allocation Details</h1>
+
+<hr />
+<div style="font-size:medium" class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AllocatId" />
+            <div class="form-group">
+                <label asp-for="VehicleId" class="control-label"></label>
+                <select asp-for="VehicleId" class="form-control" asp-items="ViewBag.VehicleId"></select>
+                <span asp-validation-for="VehicleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RouteId" class="control-label"></label>
+                <select asp-for="RouteId" class="form-control" asp-items="ViewBag.RouteId"></select>
+                <span asp-validation-for="RouteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId"></select>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <br />
+            <div style="text-align:center" class="form-group">
+                <input id="edit" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

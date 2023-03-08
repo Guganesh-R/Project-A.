@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TMS1.Models.RouteInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .Headings {
+        font-family: 'Times New Roman';
+        text-align: center;
+        color: black;
+    }
+
+    table, th, td {
+        border: 3px solid black !important;
+        border-collapse: collapse;
+    }
+</style>
+
+<h1 class="Headings">Route Information</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table table-bordered" id="allocate">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteId )
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.stop1)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.stop2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteId)
+            </td>
+                <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.stop1)
+            </td>
+                <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.stop2)
+            </td>
+
+             <td style="text-align:center">
+                <div class="editor">
+                <a asp-action="Edit" asp-route-id="@item.RouteId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RouteId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RouteId">Delete</a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

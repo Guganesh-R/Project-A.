@@ -1,0 +1,39 @@
+﻿@model TMS1.Models.Allocate
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="CreateAllocation">Delete Allocations</h1>
+
+<h4 class="CreateAllocation">Are you sure you want to delete this?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VehicleInfo.VehicleId) :
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VehicleInfo.VehicleId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RouteInfo.RouteId) :
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RouteInfo.RouteId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeInfo.EmployeeID) :
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeInfo.EmployeeID)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AllocatId" />
+        <input id="delete" type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
